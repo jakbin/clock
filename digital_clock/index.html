@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital clock</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div >
+        <div id="kl">
+            <h1 id="clock" ></h1>
+        </div>
+    </div>
+    <!-- jquery link -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        function myclock() {
+            var clock = document.getElementById("clock");
+            var d = new Date();
+
+            var h = d.getHours();
+            var m = d.getMinutes();
+            var s = d.getSeconds();
+
+            m = m < 10 ? `0${m}` : m;
+            s = s < 10 ? `0${s}` : s;
+
+            clock.innerText = `${h} : ${m} : ${s}`;
+
+            setTimeout(myclock, 1000);
+        }
+
+        myclock();
+
+    </script>
+
+</body>
+
+</html>

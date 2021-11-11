@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glamer Clock</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #091921;
+        }
+
+        body.light {
+            background: #d1dae3;
+        }
+
+        .clock {
+            position: relative;
+            height: 40vw;
+            width: 40vw;
+            /* width: 350px;
+          height: 350px; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            background: 100%;
+            background: #091921 url(clock.png);
+            background-size: cover;
+            border: 4px solid #091921;
+            border-radius: 50%;
+            box-shadow: 0 -15px 15px rgba(255, 255, 255, 0.05),
+                inset 0 -15px 15px rgba(255, 255, 255, 0.05),
+                0 15px 15px rgba(235, 216, 216, 0.3),
+                inset 0 15px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        body.light .clock {
+            background: #d1dae3 url(clock.png);
+            background-size: cover;
+            border: 4px solid #cad3dc;
+            box-shadow: 0 -15px 15px rgba(255, 255, 255, 0.05),
+                inset 0 -15px 15px rgba(106 96 96 / 55%),
+                0 15px 15px rgba(164 164 164 / 89%),
+                inset 0 15px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .clock::before {
+            content: '';
+            position: absolute;
+            /* width: 15px;
+            height: 15px; */
+            top: 47%;
+            left: 46%;
+            width: 3vw;
+            height: 3vw;
+            background: #fff;
+            border-radius: 50%;
+            z-index: 1000;
+        }
+
+        .h {
+            content: '';
+            position: absolute;
+            width: 4%;
+            height: 30%;
+            top: 22%;
+            left: 48%;
+            background: #ff105e;
+            z-index: 10;
+            border-radius: 6px;
+            transform-origin: bottom;
+
+
+        }
+
+        .m {
+            content: '';
+            position: absolute;
+            width: 3%;
+            height: 37%;
+            top: 14%;
+            left: 47.5%;
+            background: #6eff00;
+            z-index: 11;
+            border-radius: 6px 6px 0 0;
+            transform-origin: bottom;
+        }
+
+        .s {
+            content: '';
+            position: absolute;
+
+            /* width: 2px;
+          height: 120px;
+          top: 99%;
+          left: 49.8%; 
+          background: rgb(253, 1, 1);
+           z-index: 12; 
+          border-radius: 6px ; */
+            width: 1%;
+            height: 55%;
+            top: 8%;
+            /* left: 0%; */
+            opacity: 0.8;
+            background: blue;
+            transform-origin: 50% 80%;
+        }
+
+        /* body div.toogleclass{
+            color: #d1dae3;
+            background: #d1dae3;
+        } */
+
+        .toogleclass {
+            position: absolute;
+            top: 30px;
+            right: 150px;
+            width: 20px;
+            height: 20px;
+            font-size: 18px;
+            border-radius: 50%;
+            background: #d1dae3;
+            /* background-color: #ff105e; */
+            color: #d1dae3;
+            font-family: consolas;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .toogleclass::before {
+            position: absolute;
+            left: 25px;
+            content: 'Light Mode';
+            white-space: nowrap;
+        }
+
+        body.light .toogleclass {
+            background: #091921;
+            color: #091921;
+        }
+
+        body.light .toogleclass::before {
+            content: 'Dark Mode';
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="clock" class="clock">
+        <div class="h" id="h"></div>
+        <div class="m" id="m"></div>
+        <div class="s" id="s"></div>
+    </div>
+    <div class="toogleclass" onclick="toogleclass()">
+        </divS>
+        <script>
+            function toogleclass() {
+                var body = document.querySelector('body');
+                body.classList.toggle('light');
+            }
+            setInterval(() => {
+                d = new Date();
+                htime = d.getHours();
+                mtime = d.getMinutes();
+                stime = d.getSeconds();
+                hrotation = 30 * htime + mtime / 2;
+                mrotation = 6 * mtime;
+                srotation = 6 * stime;
+
+                h.style.transform = `rotate(${hrotation}deg)`;
+                m.style.transform = `rotate(${mrotation}deg)`;
+                s.style.transform = `rotate(${srotation}deg)`;
+            }, 1000);
+        </script>
+</body>
+
+
+</html>
